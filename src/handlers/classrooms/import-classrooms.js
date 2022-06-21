@@ -10,7 +10,8 @@ const classroomSchema = Joi.array().items(
 
 module.exports = async (req, res) => {
   try {
-    const classrooms = await classroomSchema.validateAsync(req.body?.classrooms);
+    const classrooms = await classroomSchema.validateAsync(
+        req.body?.classrooms);
 
     if (!classrooms) {
       throw Error('Classrooms are required');
@@ -22,7 +23,7 @@ module.exports = async (req, res) => {
       createdAt: moment().unix()
     })));
 
-    return res.json(classrooms);
+    return res.json({ data: classrooms });
   } catch (error) {
     console.log(error);
   }

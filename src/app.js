@@ -10,6 +10,16 @@ require('../mongooseFile');
 app.use(bodyParser.json());
 
 app.use('/api/classrooms', classroomRouter);
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.json({
+    data: null,
+    error: err.message
+  });
+});
+
+
 app.listen(PORT, () => {
   console.log(`ENDPOINT: http://localhost:${PORT}`);
 });

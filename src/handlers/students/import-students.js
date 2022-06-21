@@ -9,9 +9,9 @@ const studentSchema = Joi.array().items(
 );
 
 
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
   try {
-    const classroomId = req.params?.id;
+    const { classroomId } = req.params;
     if (!classroomId) {
       throw Error('Classroom id is required');
     }
@@ -28,8 +28,10 @@ module.exports = async (req, res) => {
       createdAt: moment().unix()
     })));
 
-    return res.json(students);
+    return res.json({ data: students
+    });
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
