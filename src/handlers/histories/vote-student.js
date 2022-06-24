@@ -1,5 +1,4 @@
 const History = require('../../models/history.model');
-const moment = require('moment');
 const { CriteriaType } = require('../../constant');
 
 module.exports = async (req, res, next) => {

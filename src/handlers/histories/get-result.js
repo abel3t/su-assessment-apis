@@ -32,13 +32,17 @@ module.exports = async (_req, res) => {
         classroomName: classroomsMap[student.classroomId].name,
         votes: _votes,
         totalVotes: _votes.length
-      }
+      };
     });
 
     votedStudents.sort((a, b) => b.totalVotes - a.totalVotes);
 
     return res.json({
-      data: votedStudents
+      data: votedStudents.map((votedStudent, index) => ({
+        ...votedStudent,
+        key: votedStudent._id,
+        id: index + 1
+      }))
     });
   } catch (error) {
     console.log(error);

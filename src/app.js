@@ -1,5 +1,6 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const classroomRouter = require('./routers/classroom.router');
 
@@ -8,8 +9,11 @@ const { PORT = 8080 } = process.env;
 require('../mongooseFile');
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/api/classrooms', classroomRouter);
+
+app.get('/api/students', require('./handlers/students/get-all-students'));
 
 app.get('/api/results', require('./handlers/histories/get-result'));
 
