@@ -5,7 +5,7 @@ const { CriteriaType } = require('../../constant');
 module.exports = async (req, res, next) => {
   try {
     const { classroomId, studentId } = req.params;
-    const { type } = req.body;
+    const { type, dateTime } = req.body;
     if (!classroomId) {
       throw Error('Classroom id is required');
     }
@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
       classroomId,
       studentId,
       type,
-      createdAt: moment().unix()
+      createdAt: dateTime
     });
 
     return res.json({

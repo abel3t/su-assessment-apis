@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 
 app.use('/api/classrooms', classroomRouter);
 
+app.get('/api/results', require('./handlers/histories/get-result'));
+
 app.use((err, req, res, next) => {
   console.log(err);
   res.json({
@@ -18,7 +20,6 @@ app.use((err, req, res, next) => {
     error: err.message
   });
 });
-
 
 app.listen(PORT, () => {
   console.log(`ENDPOINT: http://localhost:${PORT}`);

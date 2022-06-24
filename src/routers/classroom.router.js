@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const Classroom = require('../models/classroom.model');
-
-// Import classrooms
 
 router.post('/import', require('../handlers/classrooms/import-classrooms'));
 router.get('/', require('../handlers/classrooms/get-all-classrooms'));

@@ -8,7 +8,6 @@ const studentSchema = Joi.array().items(
     }).required()
 );
 
-
 module.exports = async (req, res, next) => {
   try {
     const { classroomId } = req.params;
@@ -22,8 +21,9 @@ module.exports = async (req, res, next) => {
       throw Error('Students are required');
     }
 
-    await Student.insertMany(students.map(student => ({
+    await Student.insertMany(students.map((student, index) => ({
       name: student.name,
+      order: index,
       classroomId: classroomId,
       createdAt: moment().unix()
     })));

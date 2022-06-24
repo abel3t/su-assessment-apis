@@ -17,8 +17,9 @@ module.exports = async (req, res) => {
       throw Error('Classrooms are required');
     }
 
-    await Classroom.insertMany(classrooms.map(classroom => ({
+    await Classroom.insertMany(classrooms.map((classroom, index) => ({
       name: classroom.name,
+      order: index,
       isActive: true,
       createdAt: moment().unix()
     })));
