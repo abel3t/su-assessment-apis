@@ -15,6 +15,8 @@ app.use("/api/classrooms", classroomRouter);
 
 app.get("/", (_, res) => res.send("Hello World!"));
 
+app.get("/api/test", (_, res) => res.send("Hello World!"));
+
 app.get("/api/students", require("./handlers/students/get-all-students"));
 
 app.get("/api/results", require("./handlers/histories/get-result"));
