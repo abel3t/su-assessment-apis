@@ -20,6 +20,8 @@ app.use("/api/classrooms", classroomRouter);
 
 app.get("/", (_, res) => res.send("Hello World!"));
 
+app.get("/api/test", (_, res) => res.send("Hello World!"));
+
 app.get("/api/students", async (_, res) => {
   try {
     const [students, classrooms] = await Promise.all([
