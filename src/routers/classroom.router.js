@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const cors = require("cors");
 
-router.use(cors());
-
+router.get(
+  "/:classroomId/students/:studentId/vote",
+  require("../handlers/histories/vote-student")
+);
 router.post("/import", require("../handlers/classrooms/import-classrooms"));
 router.get("/", require("../handlers/classrooms/get-all-classrooms"));
 router.get("/:classroomId", require("../handlers/classrooms/get-classroom"));
@@ -18,11 +19,6 @@ router.get(
 router.get(
   "/:classroomId/students/:studentId",
   require("../handlers/students/get-student")
-);
-
-router.post(
-  "/:classroomId/students/:studentId/vote",
-  require("../handlers/histories/vote-student")
 );
 
 router.get("/", (req, res) => {

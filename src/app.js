@@ -10,12 +10,7 @@ require("../mongooseFile");
 
 app.use(bodyParser.json());
 
-app.use(
-  cors({
-    origin: "*",
-    methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS",
-  })
-);
+app.use(cors());
 
 app.use("/api/classrooms", classroomRouter);
 
@@ -30,7 +25,7 @@ app.post("/api/test", (_, res) => {
 });
 
 app.post(
-  "/:classroomId/students/:studentId/vote",
+  "/classrooms/:classroomId/students/:studentId/vote",
   require("./handlers/histories/vote-student")
 );
 
