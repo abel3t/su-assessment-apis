@@ -25,6 +25,15 @@ app.get("/api/students", require("./handlers/students/get-all-students"));
 
 app.get("/api/results", require("./handlers/histories/get-result"));
 
+app.post("/api/test", (_, res) => {
+  res.json({ status: "OK" });
+});
+
+app.post(
+  "/:classroomId/students/:studentId/vote",
+  require("./handlers/histories/vote-student")
+);
+
 app.use((err, req, res, next) => {
   res.status(400).json({
     data: null,
