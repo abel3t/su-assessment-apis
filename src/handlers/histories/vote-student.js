@@ -3,6 +3,7 @@ const { CriteriaType } = require("../../constant");
 
 module.exports = async (req, res, next) => {
   try {
+    res.header("Access-Control-Allow-Origin", "*");
     const { classroomId, studentId } = req.params;
     const { type, dateTime } = req.body;
     if (!classroomId) {
