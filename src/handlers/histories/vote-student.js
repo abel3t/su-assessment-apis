@@ -5,8 +5,7 @@ const moment = require("moment");
 module.exports = async (req, res, next) => {
   try {
     res.header("Access-Control-Allow-Origin", "*");
-    const { classroomId, studentId } = req.params;
-    const { type } = req.query;
+    const { type, classroomId, studentId } = req.body;
     if (!classroomId) {
       throw next(new Error("Classroom id is required"));
     }

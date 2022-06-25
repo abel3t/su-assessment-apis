@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
-router.get(
-  "/:classroomId/students/:studentId/vote",
-  require("../handlers/histories/vote-student")
-);
+// router.post(
+//   "/:classroomId/students/:studentId/vote",
+//   require("../handlers/histories/vote-student")
+// );
 router.post("/import", require("../handlers/classrooms/import-classrooms"));
 router.get("/", require("../handlers/classrooms/get-all-classrooms"));
 router.get("/:classroomId", require("../handlers/classrooms/get-classroom"));
