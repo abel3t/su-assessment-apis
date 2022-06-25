@@ -24,7 +24,7 @@ app.post("/api/test", (_, res) => {
   res.json({ status: "OK" });
 });
 
-router.post("/api/vote", require("./handlers/histories/vote-student"));
+app.post("/api/vote", require("./handlers/histories/vote-student"));
 
 app.use((err, req, res, next) => {
   res.status(400).json({
