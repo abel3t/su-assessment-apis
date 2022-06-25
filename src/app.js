@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "https://traihe-su2022.vercel.app",
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
 );
