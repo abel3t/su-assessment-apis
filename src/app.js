@@ -25,6 +25,7 @@ app.post("/api/test", (_, res) => {
 });
 
 app.post("/api/vote", require("./handlers/histories/vote-student"));
+app.post("/api/vote2", (_req, res) => res.json({ data: "OK" }));
 
 app.use((err, req, res, next) => {
   res.status(400).json({
