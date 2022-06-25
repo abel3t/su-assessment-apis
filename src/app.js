@@ -10,7 +10,15 @@ require("../mongooseFile");
 
 app.use(bodyParser.json());
 
-app.use(cors());
+app.use(
+  cors({
+    allowedHeaders: ["authorization", "Content-Type"],
+    exposedHeaders: [],
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+  })
+);
 
 app.use("/api/classrooms", classroomRouter);
 
