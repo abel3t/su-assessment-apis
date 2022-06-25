@@ -24,11 +24,6 @@ app.post("/api/test", (_, res) => {
   res.json({ status: "OK" });
 });
 
-app.post(
-  "/classrooms/:classroomId/students/:studentId/vote",
-  require("./handlers/histories/vote-student")
-);
-
 app.use((err, req, res, next) => {
   res.status(400).json({
     data: null,

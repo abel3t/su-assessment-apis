@@ -1,11 +1,12 @@
 const History = require("../../models/history.model");
 const { CriteriaType } = require("../../constant");
+const moment = require("moment");
 
 module.exports = async (req, res, next) => {
   try {
     res.header("Access-Control-Allow-Origin", "*");
     const { classroomId, studentId } = req.params;
-    const { type, dateTime } = req.body;
+    const { type } = req.query;
     if (!classroomId) {
       throw next(new Error("Classroom id is required"));
     }
@@ -22,7 +23,7 @@ module.exports = async (req, res, next) => {
       classroomId,
       studentId,
       type,
-      createdAt: dateTime,
+      createdAt: moment().unix(),
     });
 
     return res.json({
