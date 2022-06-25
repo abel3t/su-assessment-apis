@@ -12,11 +12,15 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    allowedHeaders: ["authorization", "content-type"],
-    exposedHeaders: ["content-type"],
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
+    origin: ["http://localhost:3000", "https://traihe-su2022.vercel.app/"],
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Accept",
+      "Content-Type",
+      "Authorization",
+    ],
+    methods: ["GET", "PUT", "OPTIONS", "POST", "DELETE"],
   })
 );
 
