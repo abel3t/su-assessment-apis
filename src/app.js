@@ -9,7 +9,12 @@ const { PORT = 8080 } = process.env;
 require("../mongooseFile");
 
 app.use(bodyParser.json());
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "https://traihe-su2022.vercel.app",
+  })
+);
 
 app.use("/api/classrooms", classroomRouter);
 
@@ -20,8 +25,7 @@ app.get("/api/students", require("./handlers/students/get-all-students"));
 app.get("/api/results", require("./handlers/histories/get-result"));
 
 app.use((err, req, res, next) => {
-  console.log(err);
-  res.json({
+  res.status(400).json({
     data: null,
     error: err.message,
   });
