@@ -1,13 +1,13 @@
-const History = require('../../models/history.model');
-const Student = require('../../models/student.model');
-const Classroom = require('../../models/classroom.model');
+const History = require("../../models/history.model");
+const Student = require("../../models/student.model");
+const Classroom = require("../../models/classroom.model");
 
 module.exports = async (_req, res) => {
   try {
     const [students, classrooms, votes] = await Promise.all([
       Student.find(),
       Classroom.find(),
-      History.find()
+      History.find(),
     ]);
 
     const classroomsMap = classrooms.reduce((acc, classroom) => {
@@ -24,14 +24,15 @@ module.exports = async (_req, res) => {
       return acc;
     }, {});
 
-    const votedStudents = students.map(student => {
+    const votedStudents = students.map((student) => {
       const _votes = votesMap[student._id] || [];
       return {
         _id: student._id,
         name: student.name,
         classroomName: classroomsMap[student.classroomId].name,
+        classroomId: student.classroomId,
         votes: _votes,
-        totalVotes: _votes.length
+        totalVotes: _votes.length,
       };
     });
 
@@ -41,8 +42,8 @@ module.exports = async (_req, res) => {
       data: votedStudents.map((votedStudent, index) => ({
         ...votedStudent,
         key: votedStudent._id,
-        id: index + 1
-      }))
+        id: index + 1,
+      })),
     });
   } catch (error) {
     console.log(error);
