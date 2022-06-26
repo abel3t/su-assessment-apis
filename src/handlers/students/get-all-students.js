@@ -15,9 +15,8 @@ module.exports = async (req, res) => {
       return acc;
     }, {});
 
-    const mappingStudents = students.map((student, index) => ({
+    const mappingStudents = students.map((student) => ({
       _id: student._id,
-      id: index + 1,
       key: student._id,
       name: student.name,
       order: student.order,
@@ -27,7 +26,12 @@ module.exports = async (req, res) => {
     }));
 
     return res.json({
-      data: sortBy(mappingStudents, ["classroomOrder", "order", "_id"]),
+      data: sortBy(mappingStudents, [
+        "classroomOrder",
+        "firstName",
+        "order",
+        "_id",
+      ]).map((x, index) => ({ ...x, id: index + 1 })),
     });
   } catch (error) {
     console.log(error);

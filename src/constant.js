@@ -1,19 +1,19 @@
 const CriteriaType = {
-  GoodStudy: 'GoodStudy',
-  PlayHard: 'PlayHard',
-  EatWellSleepWell: 'EatWellSleepWell',
-  Skillfully: 'Skillfully',
-  Humorous: 'Humorous',
-  NiceWords: 'NiceWords',
-  GoodDiscipline: 'GoodDiscipline',
-  Serve: 'Serve',
-  BeautifulSingOrDancing: 'BeautifulSingOrDancing',
-  Sociable: 'Sociable'
-}
+  GoodStudy: "GoodStudy",
+  PlayHard: "PlayHard",
+  EatWellSleepWell: "EatWellSleepWell",
+  Skillfully: "Skillfully",
+  Humorous: "Humorous",
+  NiceWords: "NiceWords",
+  GoodDiscipline: "GoodDiscipline",
+  Serve: "Serve",
+  BeautifulSingOrDancing: "BeautifulSingOrDancing",
+  Sociable: "Sociable",
+};
 
 module.exports = {
-  CriteriaType
-}
+  CriteriaType,
+};
 
 /*
 LỚP THIẾU NIÊN
@@ -252,4 +252,3 @@ NHỮNG TIÊU CHÍ ĐÁNH GIÁ
 9. Hát hay múa đẹp
 10. Hòa đồng hợp tác
 * */
-
